@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>LifeLink | Request Details </title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+<!--
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+
+-->
+    </head>
+    
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <i class="bi-back"></i>
+                        <span>LifelLink </span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        
+                    </div>
+                </div>
+            </nav>
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+
+                        <div class="col-lg-5 col-12 mb-5">
+                            <nav aria-label="breadcrumb">
+                                <h6 id="user"> </h6>
+                            </nav>
+
+                            <h2 class="text-white" >Patient Details</h2>
+                            <p class="text-white" >  Name : <span id="patient_name" > </span> </p>
+                            <p class="text-white" > Blood Group : <span id="blood_group">  </span>  </p>
+                            <p class="text-white" > Location : <span id="location">  </span>  </p>
+                            <p class="text-white" > Requested Date : <span id="date" >  </span>   </p>
+
+                            <div class="d-flex align-items-center mt-5 mb-2">
+                                <a href="" class="btn custom-btn custom-border-btn smoothscroll me-4" id="accept_request" onclick > Accept Request </a>
+                                
+                                <p style="color: #680000" id="accept_alert"> Please Login First For Accept This Request </p>
+                                
+                              
+                            </div>
+                            <p style="color: #680000" id="message"></p>
+                        </div>
+
+                        <div class="col-lg-5 col-12">
+                        <h2 class="text-white" > Description </h2>
+                            <div class="topics-detail-block bg-white shadow-lg p-3">
+                            
+                                <p class="text-dark text-justify" id="details" style="text-align: justify;"> 
+
+                                    
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+        </main>
+		
+        <footer class="site-footer section-padding" id="footer-container">
+
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/request.js"></script>
+        <script src="js/app.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,26 @@
+authenticated user donation request-  http://127.0.0.1:8000/donate_blood/donation-requests/my_requests/
+
+
+all donation requests : http://127.0.0.1:8000/donate_blood/donation-requests/
+request details : http://127.0.0.1:8000/donate_blood/donation-requests/1/
+user donation history : http://127.0.0.1:8000/donate_blood/donation-history/
+
+accept request : http://127.0.0.1:8000/donate_blood/accept-request/5/
+cancel request : http://127.0.0.1:8000/donate_blood/cancel-request/1/
+
+is donation completed : http://127.0.0.1:8000/donate_blood/complete-request/5/
+
+is available for donation : profile update
+
+available blood donor : http://127.0.0.1:8000/donate_blood/users/
+
+
+blood-group filter : A+, A- , ...... : http://127.0.0.1:8000/donate_blood/donation-requests/blood_group_filter/?blood_group=A-
+
+user by blood group :   http://127.0.0.1:8000/donate_blood/users/blood_group_filter/?blood_group=A-
+
+
+{
+  "username": "akbar",
+  "password": "12345678!a"
+}

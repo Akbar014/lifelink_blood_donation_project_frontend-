@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>LifeLink | Create Request </title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        
+
+        <link href="css/templatemo-topic-listing.css" rel="stylesheet">      
+<!--
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+
+-->
+</head>
+    
+    <body id="top">
+
+        <main>
+
+           <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <i class="bi-back"></i>
+                        <span>LifeLink</span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        
+                    </div>
+                </div>
+            </nav>
+            
+ 
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+
+                    <h3 class="text-light text-center"> Create Donation Request </h3>
+                    <div class="container " style="width: 60%">
+                        <form id="createEntryForm">
+                         <div class="form-group">
+                            <label for="patientName">Patient Name</label>
+                            <input type="text" class="form-control" id="patientName" name="patient_name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bloodGroup">Blood Group</label>
+                            <select class="form-select" aria-label="Default select example"  id="bloodGroup" name="blood_group" required>
+                                <option selected>Select Blood Group </option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                              </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Details</label>
+                            <textarea class="form-control" id="details" name="details" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" name="location" required>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="requestedDate">Requested Date</label>
+                            <input type="datetime-local" class="form-control" id="requestedDate" name="requested_date" required>
+                        </div>
+                       
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-info text-white mt-2 w-25 text-justify" onclick="doantioRequestDetail(${donationRequest.id})" > Submit  </button>
+                        </div>
+                        
+                        </form>
+                    </div>
+
+                    
+
+                    </div>
+                </div>
+            </header>
+
+
+        </main>
+
+        <footer class="site-footer section-padding" id="footer-container">
+
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+         
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/donationRequests.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/request.js"></script>
+
+
+    <script>
+        document.getElementById('createEntryForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        fetch('http://127.0.0.1:8000/donate_blood/donation-requests/', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            window.location.href = "donation_request.html";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error creating entry.');
+        });
+        });
+    </script>
+
+
+    </body>
+</html>
