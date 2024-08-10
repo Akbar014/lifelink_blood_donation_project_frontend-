@@ -367,27 +367,31 @@ function navbarOption (){
 
 
 const url = getCurrentURL();
-// console.log("url")
-// console.log(url);
+const pathName = url.split('/').pop().split('.')[0]; // Get the last part of the URL path without extension
+const currentHash = location.hash;
 
-if (url.includes('recipient')) {
-    const NavLink = document.querySelector('a.nav-link[href="recipient_requests.html"], a.nav-link[href="recipient_requests"]');
+console.log(`pathName: ${pathName}`);
+console.log(`currentHash: ${currentHash}`);
+console.log(`Selector: a.nav-link[href="${pathName}.html${currentHash}"], a.nav-link[href="${pathName}${currentHash}"]`);
+
+
+if (url.includes('index')) {
+    const NavLink = document.querySelector(`a.nav-link[href*="${pathName}"]`);
     if (NavLink) {
         NavLink.classList.add('active');
     }
     
 }
 
-if (url.includes('index')) {
-    const NavLink = document.querySelector('a.nav-link[href="index.html"]');
+if (pathName.includes('recipient')) {
+    const NavLink = document.querySelector(`a.nav-link[href*="${pathName}"]`);
     if (NavLink) {
         NavLink.classList.add('active');
     }
-    
 }
 
 if (url.includes('about')) {
-    const NavLink = document.querySelector('a.nav-link[href="about.html"]');
+    const NavLink = document.querySelector(`a.nav-link[href*="${pathName}"]`);
     if (NavLink) {
         NavLink.classList.add('active');
     }
@@ -403,7 +407,7 @@ if (url.includes('section_4')) {
 }
 
 if (url.includes('section_5')) {
-    const NavLink = document.querySelector('a.nav-link[href="index.html#section_5"]');
+    const NavLink = document.querySelector(`a.nav-link[href="${pathName}.html${currentHash}"], a.nav-link[href="${pathName}${currentHash}"]`);
     if (NavLink) {
         NavLink.classList.add('active');
     }
@@ -411,7 +415,7 @@ if (url.includes('section_5')) {
 }
 
 if (url.includes('login')) {
-    const NavLink = document.querySelector('a.nav-link[href="login.html"]');
+    const NavLink = document.querySelector(`a.nav-link[href*="${pathName}"]`);
     if (NavLink) {
         NavLink.classList.add('active');
     }
@@ -419,7 +423,7 @@ if (url.includes('login')) {
 }
 
 if (url.includes('register')) {
-    const NavLink = document.querySelector('a.nav-link[href="register.html"]');
+    const NavLink = document.querySelector(`a.nav-link[href*="${pathName}"]`);
     if (NavLink) {
         NavLink.classList.add('active');
     }
@@ -483,6 +487,8 @@ if (url.includes('register')) {
         accept_alert.style.display = 'block';
         
     }
+
+
 }
 
 
