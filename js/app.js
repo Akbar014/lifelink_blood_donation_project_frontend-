@@ -367,10 +367,11 @@ function navbarOption (){
 
 
 const url = getCurrentURL();
-
+// console.log("url")
+// console.log(url);
 
 if (url.includes('recipient')) {
-    const NavLink = document.querySelector('a.nav-link[href="recipient_requests.html"]');
+    const NavLink = document.querySelector('a.nav-link[href="recipient_requests.html"], a.nav-link[href="recipient_requests"]');
     if (NavLink) {
         NavLink.classList.add('active');
     }
