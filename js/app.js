@@ -375,7 +375,7 @@ console.log(`currentHash: ${currentHash}`);
 console.log(`Selector: a.nav-link[href="${pathName}.html${currentHash}"], a.nav-link[href="${pathName}${currentHash}"]`);
 
 
-if (url.includes('index')) {
+if (url.includes('/')) {
     const NavLink = document.querySelector(`a.nav-link[href*="${pathName}"]`);
     if (NavLink) {
         NavLink.classList.add('active');
