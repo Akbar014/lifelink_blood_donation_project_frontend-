@@ -3,7 +3,6 @@
 const userDonationRequest = () => {
     const token = localStorage.getItem('token');
     
-    console.log(token)
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-history/`, {
         method: 'GET', 
         headers: {
@@ -12,8 +11,6 @@ const userDonationRequest = () => {
         }
     })
 
-    // fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-history/`)
-
       .then((res) => res.json())
       .then((data) => displayRequest(data))
       .catch((err) => console.log(err));
@@ -21,11 +18,10 @@ const userDonationRequest = () => {
 
 
   const displayRequest = (data) => {
-    //   console.log(data);
+
     if (!data || data.length === 0) {
       const parent = document.getElementById("message");
       const messageDiv = document.createElement("div");
-      // messageDiv.classList.add("col-md-12", "text-center", "my-4", "text-white");
       messageDiv.innerHTML = `<p class="text-center text-light"> No Donation Request Accepted Yet</p>`;
       parent.appendChild(messageDiv);
     }
@@ -41,9 +37,7 @@ const userDonationRequest = () => {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        const patient_name = data.patient_name
-
+        const patient_name = data.patient_name;
         const parent = document.getElementById("table-body");
         const tr = document.createElement("tr");
         
@@ -60,17 +54,12 @@ const userDonationRequest = () => {
       })
       .catch((err) => console.log(err));
 
-
-        
-        
       });
     
   };
 
 
-  const handleCancelRequest = (id) => {
-    // event.preventDefault();
-    // const donationRequestId = parseInt(event.target.getAttribute('data-id'), 10);
+const handleCancelRequest = (id) => {
     const donationRequestId = id;
     console.log(typeof(donationRequestId))
     cancelRequest(donationRequestId);
@@ -93,8 +82,6 @@ const cancelRequest = (donationRequestId) => {
         }
     })
 
-    // fetch(`https://lifelink-4bu4.onrender.com/donate_blood/accept-request/${donationRequestId}/`)
-
       .then((res) => res.json())
       .then((data) => {
         document.getElementById("accept_request").innerHTML = "Request Canceled";
@@ -104,8 +91,6 @@ const cancelRequest = (donationRequestId) => {
 
 
   const handleCompleteRequest= (id) => {
-    // event.preventDefault();
-    // const donationRequestId = parseInt(event.target.getAttribute('data-id'), 10);
     const donationRequestId = id;
     console.log(typeof(donationRequestId))
     completeRequest(donationRequestId);
@@ -127,8 +112,6 @@ const completeRequest = (donationRequestId) => {
             
         }
     })
-
-    // fetch(`https://lifelink-4bu4.onrender.com/donate_blood/accept-request/${donationRequestId}/`)
 
       .then((res) => res.json())
       .then((data) => {

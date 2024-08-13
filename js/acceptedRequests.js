@@ -1,22 +1,16 @@
-console.log("dgsdfg")
+
 const userAcceptedDonationRequest = () => {
     const token = localStorage.getItem('token');
     
-    // console.log(token)
-    fetch(`http://127.0.0.1:8000/donate_blood/donation-accepted/`, {
+    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-accepted/`, {
         method: 'GET', 
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Token ${token}`
         }
     })
-
-    // fetch(`https://akbar014.github.io/lifelink_blood_donation_frontend/donate_blood/donation-history/`)
-
       .then((res) => res.json())
       .then((data) => displayAcceptedRequest(data))
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.log(err));
   };
 
 
@@ -24,15 +18,13 @@ const userAcceptedDonationRequest = () => {
     if (!data || data.length === 0) {
         const parent = document.getElementById("messages");
         const messageDiv = document.createElement("div");
-        // messageDiv.classList.add("col-md-12", "text-center", "my-4", "text-white");
-        messageDiv.innerHTML = `<p class="text-center text-light"> No Donation Request Accepted </p>`;
-        parent.appendChild(messageDiv);
+
+        parent.innerHTML = 'No Donation Request Accepted ' ;
     }
       data.forEach(item => {
-        console.log(item.donation_request)
 
         const token = localStorage.getItem('token');
-        fetch(`http://127.0.0.1:8000/donate_blood/donation-requests/${item.donation_request}`, {
+        fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/${item.donation_request}`, {
           method: 'GET', 
           headers: {
               'Content-Type': 'application/json',
@@ -64,18 +56,10 @@ const userAcceptedDonationRequest = () => {
            
             `;
         parent.appendChild(tr);
-      
-        
-        
-        
 
       })
       .catch((err) => console.log(err));
 
-
-
-        
-        
       });
     
   };

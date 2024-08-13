@@ -11,9 +11,6 @@ const userDonationRequest = () => {
             'Authorization': `Token ${token}`
         }
     })
-
-    // fetch(`https://akbar014.github.io/lifelink_blood_donation_frontend/donate_blood/donation-history/`)
-
       .then((res) => res.json())
       .then((data) => displayRequest(data))
       .catch((err) => console.log(err));
@@ -21,7 +18,6 @@ const userDonationRequest = () => {
 
 
   const displayRequest = (data) => {
-    //   console.log(data);
       data.forEach(item => {
         console.log(item)
         const parent = document.getElementById("table-body");

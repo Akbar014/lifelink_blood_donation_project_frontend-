@@ -6,19 +6,16 @@ function allDonoationRequest(){
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/`)
     .then((res) => res.json())
     .then((data)=> displayDonationRequest(data) )
-    // .then((data)=> console.log(data) )
     .catch((err)=> console.log(err));
 }
 
 
 function availableDonoationRequest(blood_group){
     const bloodGroup = blood_group ;
-    // console.log(bloodGroup);
     const encodedBloodGroup = encodeURIComponent(bloodGroup);
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/blood_group_filter/?blood_group=${encodedBloodGroup}`)
     .then((res) => res.json())
     .then((data)=> displayDonationRequest(data) )
-    // .then((data)=> console.log(data) )
     .catch((err)=> console.log(err));
 }
 
@@ -26,9 +23,6 @@ const displayDonationRequest = (donationRequests) => {
     document.getElementById("donation_request_container").innerHTML = "";
 
     if (!donationRequests || donationRequests.length === 0) {
-        // Display message if no donors are available
-       
-
         const parent = document.getElementById("donation_request_container");
         const messageDiv = document.createElement("div");
         messageDiv.classList.add("col-12", "text-center", "my-4");
@@ -78,16 +72,13 @@ function availableDonor(blood_group){
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/blood_group_filter/?blood_group=${encodedBloodGroup}`)
     .then((res) => res.json())
     .then((data)=> displayDonor(data) )
-    // .then((data)=> console.log(data) )
     .catch((err)=> console.log(err));
 }
 
 function allDonor(){
-    console.log("ok");
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/`)
     .then((res) => res.json())
     .then((data)=> displayDonor(data) )
-    // .then((data)=> console.log(data) )
     .catch((err)=> console.log(err));
 }
 
@@ -106,20 +97,14 @@ const displayDonor = (donors) => {
     }
 
     donors.forEach(donor => {
-
-        // console.log(donor.username)
         const baseUrl = "https://lifelink-4bu4.onrender.com";
-        // const imgSrc = donor.image ? `${baseUrl}${donor.image}` : "images/profile.jpg";
+        
         const imgSrc = donor.image ? `${donor.image}` : "images/profile.jpg";
-        console.log("image")
-        console.log(imgSrc)
-
-       
         const parent = document.getElementById("donor_container");
         const div = document.createElement("div");
         div.classList.add("col-lg-4", "col-md-6", "col-12", "mb-4", "mb-lg-0", "mt-3");
         let availableStatus = donor.is_available_for_donation ? 'Available For Donation' : 'Not Available For Donation' ;
-        // console.log(availableStatus)
+        
 
         div.innerHTML = `
                     <div class="custom-block bg-white shadow-lg">
@@ -138,8 +123,6 @@ const displayDonor = (donors) => {
                                     
                                      <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>  Last Donation Date  : ${donor.last_donation_date} </span></p>
                                      <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>   ${availableStatus } </span></p>
-
-                                
                                     
                                 </div>
 
@@ -163,7 +146,6 @@ function doantionHistory(){
     alert()
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-history/`)
     .then((res) => res.json())
-    // .then((data)=> displayDonor(data) )
     .then((data)=> console.log(data) )
     .catch((err)=> console.log(err));
 }
@@ -171,16 +153,12 @@ function doantionHistory(){
 
 
 
-// document.getElementsByClassName("blood_group").addEventListener('click', availableDonor);
-
 
 
 
 
 const handleRegistration = (event) => {
     event.preventDefault();
-
-    // Function to get input values
     document.getElementById("register").innerText = "Loading";
     const getValue = (id) => document.getElementById(id).value.trim();
 
@@ -210,7 +188,6 @@ const handleRegistration = (event) => {
         blood_group
     };
 
-    console.log(info)
 
     if (password === confirm_password) {
         document.getElementById("error").innerText = "";
@@ -231,9 +208,7 @@ const handleRegistration = (event) => {
                     document.getElementById("error").innerText = "Registration successful. Check your mail for confirmation.";
                 }
                 document.getElementById("register").innerText = "Register";
-                // console.log(data);
-                // document.getElementById("error").innerText = data
-                // document.getElementById("register").innerText = "Register";
+               
             } );
         } else {
             document.getElementById("error").innerText =
@@ -252,7 +227,6 @@ const handleLogin = (event) => {
     event.preventDefault();
     const username = getValue("login-username");
     const password = getValue("login-password");
-    console.log(username, password);
     if ((username, password)) {
       fetch("https://lifelink-4bu4.onrender.com/donate_blood/login/", {
         method: "POST",
@@ -268,7 +242,6 @@ const handleLogin = (event) => {
             localStorage.setItem("user", data.user);
             localStorage.setItem("user_id", data.user_id);
             document.getElementById("loginalert").innerHTML = "Successfull Logged in ";
-            // window.location.href = "https://akbar014.github.io/lifelink_blood_donation_frontend";
             window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
             
             
@@ -285,7 +258,6 @@ const handleLogin = (event) => {
 const handlelogOut = () => {
 
     const token = localStorage.getItem("token");
-    console.log(token)
   
     fetch("https://lifelink-4bu4.onrender.com/donate_blood/logout/", {
       method: "POST",
@@ -296,7 +268,6 @@ const handlelogOut = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         localStorage.removeItem("user_id");
@@ -359,10 +330,8 @@ function navbarOption (){
  // Remove the 'active' class from any other active links
 
  const currentActiveLink = document.querySelector('a.nav-link.active');
- console.log(currentActiveLink);
  if (currentActiveLink) {
-     currentActiveLink.classList.remove('active');
-     console.log(currentActiveLink);
+    currentActiveLink.classList.remove('active');
 }
 
 
@@ -370,9 +339,6 @@ const url = getCurrentURL();
 const pathName = url.split('/').pop().split('.')[0]; // Get the last part of the URL path without extension
 const currentHash = location.hash;
 
-console.log(`pathName: ${pathName}`);
-console.log(`currentHash: ${currentHash}`);
-console.log(`Selector: a.nav-link[href="${pathName}.html${currentHash}"], a.nav-link[href="${pathName}${currentHash}"]`);
 
 
 if (url.includes('/')) {
@@ -442,8 +408,6 @@ if (url.includes('register')) {
     const token = localStorage.getItem('token');
 
     const user_id = localStorage.getItem("user_id");
-
-    console.log(user_id)
     
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/${user_id}`, {
         method: 'GET', 
@@ -454,7 +418,6 @@ if (url.includes('register')) {
     })
     .then((res) => res.json())
     .then((data) => {
-        // console.log(data)
         const profileImg = document.getElementById('profile-img');
 
         if (profileImg && data.image) {
@@ -494,11 +457,9 @@ if (url.includes('register')) {
 
 function userload (){
     const user_id = localStorage.getItem("user_id");
-    console.log(user_id)
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/users/${user_id}`)
     .then((res) => res.json())
     .then((data)=> displayDonationRequest(data) )
-    // .then((data)=> console.log(data) )
     .catch((err)=> console.log(err));
 }
 
@@ -507,8 +468,6 @@ function searchDonor(event){
     event.preventDefault();
     const keyword = document.getElementById("keyword").value;
     const encodedBloodGroup = encodeURIComponent(keyword);
-  
-    // console.log(encodedBloodGroup)
     fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/blood_group_filter/?blood_group=${encodedBloodGroup}`)
     .then((res) => res.json())
     .then((data)=> displaySearchData(data))
@@ -529,22 +488,19 @@ const displaySearchData = (donors) => {
     }
 
     donors.forEach(donor => {
-
-        // const baseUrl = "https://lifelink-4bu4.onrender.com";
         const imgSrc = donor.image ? `${donor.image}` : "images/profile.jpg";
 
         const parent = document.getElementById("search_result");
         const div = document.createElement("div");
         div.classList.add("col-lg-4", "col-md-6", "col-12", "mb-4", "mb-lg-0", "mt-3");
         let availableStatus = donor.is_available_for_donation ? 'Available For Donation' : 'Not Available For Donation' ;
-        console.log(availableStatus)
 
         div.innerHTML = `
                     <div class="custom-block bg-white shadow-lg">
                       
                             <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
-                <img src="${imgSrc}" id="donor-img" style="height: 200px; width: 200px; border-radius: 50%;" class="custom-block-image img-fluid" alt="">
-            </div>
+                                <img src="${imgSrc}" id="donor-img" style="height: 200px; width: 200px; border-radius: 50%;" class="custom-block-image img-fluid" alt="">
+                            </div>
                             <div class="d-flex mt-3">
                                 <div>
                                     <h5 class="mb-2">${donor.username}</h5>

@@ -4,7 +4,6 @@ const donationRequestDetails = () => {
     fetch (`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/${param}/`)
     .then((res) => res.json())
     .then((data) =>{
-        console.log(data)
         document.getElementById("patient_name").innerHTML = data.patient_name;
         document.getElementById("blood_group").innerHTML = data.blood_group;
         document.getElementById("location").innerHTML = data.location;
@@ -41,11 +40,6 @@ const donationRequestDetails = () => {
             
         })
         .catch((err) => console.log(err));
-
-
-        
-    
-
     })
     .catch((err) => console.log(err));
    
@@ -74,9 +68,6 @@ const acceptRequest = (donationRequestId) => {
             
         }
     })
-
-    // fetch(`https://lifelink-4bu4.onrender.com/donate_blood/accept-request/${donationRequestId}/`)
-
     .then((res) => res.json())
     .then((data) => {
     document.getElementById("accept_request").innerHTML = "Request Accepted";
@@ -86,7 +77,5 @@ const acceptRequest = (donationRequestId) => {
     
       
   };
-
-
 
 donationRequestDetails();

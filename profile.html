@@ -76,7 +76,7 @@ https://templatemo.com/tm-590-topic-listing
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2 class="text-white" id="userName"> </h2>
-                            <p class="text-white" id="email" style="overflow-wrap: break-word;"> </p>
+                                    <p class="text-white" id="email" style="overflow-wrap: break-word;"> </p>
                                 </div>
                             </div>
                             
@@ -89,7 +89,7 @@ https://templatemo.com/tm-590-topic-listing
             </header>
 
 
-            <section class="section-padding">
+            <section class="section-padding"  style="background: #f0f8ff;">
                 <div class="container">
                     <div class="row">
 
@@ -100,41 +100,53 @@ https://templatemo.com/tm-590-topic-listing
                         <div class="col-lg-8 col-12 mt-3 mx-auto">
                             <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
                                 <form id="edit-profile-form" >
-                                    
-                                    <div class="form-group">
+                                     
+                                    <div class="form-group mt-2">
+                                        <label for="image">First Name </label>
+                                        <input type="text" class="form-control" id="first_name" name="first_name">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="image">Last Name </label>
+                                        <input type="text" class="form-control" id="last_name" name="last_name">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="image">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username">
+                                    </div>
+                                    <div class="form-group mt-2">
                                         <label for="image">Profile Image</label>
                                         <input type="file" class="form-control" id="image" name="image">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="mobile_no">Mobile No</label>
                                         <input type="text" class="form-control" id="mobile_no" name="mobile_no" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="age">Age</label>
                                         <input type="number" class="form-control" id="age" name="age" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="blood_group">Blood Group</label>
                                         <input type="text" class="form-control" id="blood_group" name="blood_group" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="gender">Gender</label>
                                         <input type="text" class="form-control" id="gender" name="gender">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="address">Address</label>
                                         <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="last_donation_date">Last Donation Date</label>
                                         <input type="date" class="form-control" id="last_donation_date" name="last_donation_date">
                                     </div>
-                                    <div class="form-group form-check">
+                                    <div class="form-group form-check mt-2">
                                         <input type="checkbox" class="form-check-input" id="is_available_for_donation" name="is_available_for_donation">
                                         <label class="form-check-label" for="is_available_for_donation">Available for Donation</label>
                                     </div>
 
-                                    <button class="btn btn-sm btn-success mt-2"> Update </button>
+                                    <button class="btn btn-sm btn-success mt-2" onclick="editProfileInfo(event)" > Update </button>
                                 </form>
                             </div>
                         </div>
