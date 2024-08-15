@@ -170,7 +170,7 @@ const handleRegistration = (event) => {
     const confirm_password = getValue("password1");
     const mobile_no = getValue("mobile_no");
     const gender = getValue("gender");
-    const address = getValue("address");
+    // const address = getValue("address");
     const age = getValue("age");
     const blood_group = getValue("blood_group");
 
@@ -183,7 +183,7 @@ const handleRegistration = (event) => {
         confirm_password,
         mobile_no,
         gender,
-        address,
+        // address,
         age,
         blood_group
     };
