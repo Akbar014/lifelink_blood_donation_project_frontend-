@@ -129,7 +129,6 @@ const displayDonor = (donors) => {
                                 <span class="badge bg-design rounded-pill ms-auto">${donor.blood_group}</span>
                             </div>
 
-                            <p class="mb-0 mt-2" style="font-size: 15px;text-align:justify;min-height:50px;"><span>  ${donor.address.slice(0,80)} </span></p>
                             
                             
                         
