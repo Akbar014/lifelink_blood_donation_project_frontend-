@@ -3,7 +3,7 @@
 
 
 function allDonoationRequest(){
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/`)
+    fetch(`http://127.0.0.1:8000/donate_blood/donation-requests/`)
     .then((res) => res.json())
     .then((data)=> displayDonationRequest(data) )
     .catch((err)=> console.log(err));
@@ -13,7 +13,7 @@ function allDonoationRequest(){
 function availableDonoationRequest(blood_group){
     const bloodGroup = blood_group ;
     const encodedBloodGroup = encodeURIComponent(bloodGroup);
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/blood_group_filter/?blood_group=${encodedBloodGroup}`)
+    fetch(`http://127.0.0.1:8000/donate_blood/donation-requests/blood_group_filter/?blood_group=${encodedBloodGroup}`)
     .then((res) => res.json())
     .then((data)=> displayDonationRequest(data) )
     .catch((err)=> console.log(err));
@@ -69,14 +69,14 @@ function availableDonor(blood_group){
     const bloodGroup = blood_group ;
     console.log(bloodGroup);
     const encodedBloodGroup = encodeURIComponent(bloodGroup);
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/blood_group_filter/?blood_group=${encodedBloodGroup}`)
+    fetch(`http://127.0.0.1:8000/donate_blood/users/blood_group_filter/?blood_group=${encodedBloodGroup}`)
     .then((res) => res.json())
     .then((data)=> displayDonor(data) )
     .catch((err)=> console.log(err));
 }
 
 function allDonor(){
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/`)
+    fetch(`http://127.0.0.1:8000/donate_blood/users/`)
     .then((res) => res.json())
     .then((data)=> displayDonor(data) )
     .catch((err)=> console.log(err));
@@ -97,7 +97,7 @@ const displayDonor = (donors) => {
     }
 
     donors.forEach(donor => {
-        const baseUrl = "https://lifelink-4bu4.onrender.com";
+        const baseUrl = "http://127.0.0.1:8000";
         
         const imgSrc = donor.image ? `${donor.image}` : "images/profile.jpg";
         const parent = document.getElementById("donor_container");
@@ -144,7 +144,7 @@ const displayDonor = (donors) => {
 
 function doantionHistory(){
     alert()
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-history/`)
+    fetch(`http://127.0.0.1:8000/donate_blood/donation-history/`)
     .then((res) => res.json())
     .then((data)=> console.log(data) )
     .catch((err)=> console.log(err));
@@ -170,7 +170,7 @@ const handleRegistration = (event) => {
     const confirm_password = getValue("password1");
     const mobile_no = getValue("mobile_no");
     const gender = getValue("gender");
-    const address = getValue("address");
+    // const address = getValue("address");
     const age = getValue("age");
     const blood_group = getValue("blood_group");
 
@@ -183,7 +183,7 @@ const handleRegistration = (event) => {
         confirm_password,
         mobile_no,
         gender,
-        address,
+        // address,
         age,
         blood_group
     };
@@ -194,7 +194,7 @@ const handleRegistration = (event) => {
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
             console.log(info);
 
-            fetch("https://lifelink-4bu4.onrender.com/donate_blood/register/", {
+            fetch("http://127.0.0.1:8000/donate_blood/register/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(info),
@@ -228,7 +228,7 @@ const handleLogin = (event) => {
     const username = getValue("login-username");
     const password = getValue("login-password");
     if ((username, password)) {
-      fetch("https://lifelink-4bu4.onrender.com/donate_blood/login/", {
+      fetch("http://127.0.0.1:8000/donate_blood/login/", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -259,7 +259,7 @@ const handlelogOut = () => {
 
     const token = localStorage.getItem("token");
   
-    fetch("https://lifelink-4bu4.onrender.com/donate_blood/logout/", {
+    fetch("http://127.0.0.1:8000/donate_blood/logout/", {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,
@@ -409,7 +409,7 @@ if (url.includes('register')) {
 
     const user_id = localStorage.getItem("user_id");
     
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/${user_id}`, {
+    fetch(`http://127.0.0.1:8000/donate_blood/users/${user_id}`, {
         method: 'GET', 
         headers: {
             'Content-Type': 'application/json',
@@ -457,7 +457,7 @@ if (url.includes('register')) {
 
 function userload (){
     const user_id = localStorage.getItem("user_id");
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/users/${user_id}`)
+    fetch(`http://127.0.0.1:8000/donate_blood/donation-requests/users/${user_id}`)
     .then((res) => res.json())
     .then((data)=> displayDonationRequest(data) )
     .catch((err)=> console.log(err));
@@ -468,7 +468,7 @@ function searchDonor(event){
     event.preventDefault();
     const keyword = document.getElementById("keyword").value;
     const encodedBloodGroup = encodeURIComponent(keyword);
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/blood_group_filter/?blood_group=${encodedBloodGroup}`)
+    fetch(`http://127.0.0.1:8000/donate_blood/users/blood_group_filter/?blood_group=${encodedBloodGroup}`)
     .then((res) => res.json())
     .then((data)=> displaySearchData(data))
     .catch((err)=> console.log(err));
