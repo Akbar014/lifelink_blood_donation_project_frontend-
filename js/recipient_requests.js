@@ -4,7 +4,7 @@ const userDonationRequest = () => {
     const token = localStorage.getItem('token');
     
     console.log(token)
-    fetch(`https://akbar014.github.io/lifelink_blood_donation_frontend/donate_blood/donation-requests/my_requests/`, {
+    fetch(`https://lifelink-five.vercel.app/donate_blood/donation-requests/my_requests/`, {
         method: 'GET', 
         headers: {
             'Content-Type': 'application/json',

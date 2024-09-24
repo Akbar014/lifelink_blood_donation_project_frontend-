@@ -7,7 +7,7 @@ const contactformSubmit = (event) => {
     const description = getValue("description");
 
     if ((name, description)) {
-      fetch("https://lifelink-4bu4.onrender.com/donate_blood/contactForm/", {
+      fetch("https://lifelink-five.vercel.app/donate_blood/contactForm/", {
         method: "POST",
         headers: { "content-type": "application/json",  'Authorization': `Token ${localStorage.getItem('token')}` },
         body: JSON.stringify({ name, email, subject, description }),

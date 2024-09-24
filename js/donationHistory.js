@@ -3,7 +3,7 @@
 const userDonationRequest = () => {
     const token = localStorage.getItem('token');
     
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-history/`, {
+    fetch(`https://lifelink-five.vercel.app/donate_blood/donation-history/`, {
         method: 'GET', 
         headers: {
             'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const userDonationRequest = () => {
       data.forEach(item => {
 
         const token = localStorage.getItem('token');
-        fetch(`https://lifelink-4bu4.onrender.com/donate_blood/donation-requests/${item.donation_request}`, {
+        fetch(`https://lifelink-five.vercel.app/donate_blood/donation-requests/${item.donation_request}`, {
           method: 'GET', 
           headers: {
               'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const cancelRequest = (donationRequestId) => {
     console.log(donationRequestId)
     console.log(token)
 
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/cancel-request/${donationRequestId}/`, {
+    fetch(`https://lifelink-five.vercel.app/donate_blood/cancel-request/${donationRequestId}/`, {
         method: 'GET', 
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ const completeRequest = (donationRequestId) => {
     console.log(donationRequestId)
     console.log(token)
 
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/complete-request/${donationRequestId}/`, {
+    fetch(`https://lifelink-five.vercel.app/donate_blood/complete-request/${donationRequestId}/`, {
         method: 'GET', 
         headers: {
             'Content-Type': 'application/json',

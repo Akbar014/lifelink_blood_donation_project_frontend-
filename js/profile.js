@@ -2,7 +2,7 @@ const userProfile = () => {
     const user_id = localStorage.getItem("user_id");
     const token = localStorage.getItem('token'); 
     
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/${user_id}`, {
+    fetch(`https://lifelink-five.vercel.app/donate_blood/users/${user_id}`, {
         method: 'GET', 
         headers: {
             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const editProfileInfo = (event) => {
     }
 
 
-    fetch(`https://lifelink-4bu4.onrender.com/donate_blood/users/${user_id}/`, {
+    fetch(`https://lifelink-five.vercel.app/donate_blood/users/${user_id}/`, {
         method: 'PUT',
         headers: {
             // 'Content-Type': 'application/json',
