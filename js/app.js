@@ -493,7 +493,7 @@ const displaySearchData = (donors) => {
         const div = document.createElement("div");
         div.classList.add("col-lg-4", "col-md-6", "col-12", "mb-4", "mb-lg-0", "mt-3");
         let availableStatus = donor.is_available_for_donation ? 'Available For Donation' : 'Not Available For Donation' ;
-
+        let address = donor.address ? donor.address.slice(0,80) : 'No address found '
         div.innerHTML = `
                     <div class="custom-block bg-white shadow-lg">
                       
@@ -519,7 +519,7 @@ const displaySearchData = (donors) => {
                                 <span class="badge bg-design rounded-pill ms-auto">${donor.blood_group}</span>
                             </div>
 
-                            <p class="mb-0 mt-2" style="font-size: 15px;text-align:justify;min-height:50px;"><span>  ${donor.address.slice(0,80)} </span></p>
+                            <p class="mb-0 mt-2" style="font-size: 15px;text-align:justify;min-height:50px;"><span>  ${address} </span></p>
                             
                             
                         
