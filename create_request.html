@@ -21,7 +21,11 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         
 
-        <link href="css/templatemo-topic-listing.css" rel="stylesheet">      
+        <link href="css/templatemo-topic-listing.css" rel="stylesheet">     
+        
+        
+        <!-- Toastr CDN -->  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <!--
 
 TemplateMo 590 topic listing
@@ -147,6 +151,7 @@ https://templatemo.com/tm-590-topic-listing
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            localStorage.setItem("create_success", true);
             window.location.href = "donation_request.html";
         })
         .catch(error => {
@@ -155,6 +160,8 @@ https://templatemo.com/tm-590-topic-listing
         });
         });
     </script>
+
+    
 
 
     </body>

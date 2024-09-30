@@ -21,7 +21,10 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         
 
-        <link href="css/templatemo-topic-listing.css" rel="stylesheet">      
+        <link href="css/templatemo-topic-listing.css" rel="stylesheet">   
+        
+        <!-- Toastr CDN -->  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
        
 
 </head>
@@ -105,6 +108,23 @@
         
         <script src="js/request.js"></script>
 
+         <!-- Toastr js  -->  
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+     <script>
+         // Toastr configuration
+         toastr.options = {
+             "closeButton": true,
+             "progressBar": true,
+             "positionClass": "toast-top-right", 
+             "timeOut": "5000" 
+         };
+     
+         if (localStorage.getItem("create_success")) {
+             toastr.success('Request created successfully!', 'Success');
+             localStorage.removeItem("create_success");
+         }
+     </script>
 
     </body>
 </html>
