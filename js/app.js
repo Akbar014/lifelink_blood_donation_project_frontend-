@@ -197,7 +197,9 @@ const handleRegistration = (event) => {
                     if (data.error) {
 
                         document.getElementById("error").innerText = data.error;
-                    } else {
+                    } else if(data.username) {
+                        document.getElementById("error").innerText = data.username;
+                    }else {
                         document.getElementById("error").innerText = "Registration successful. Check your mail for confirmation.";
                     }
                     document.getElementById("register").innerText = "Register";
