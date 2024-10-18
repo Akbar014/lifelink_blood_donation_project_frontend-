@@ -38,9 +38,6 @@ cd directory_name
 
 <p>3. Open with live server</p>
 
-<h2>🍰 Contribution Guidelines:</h2>
-
-  
   
 <h2>💻 Built with</h2>
 
