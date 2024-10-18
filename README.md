@@ -1,7 +1,5 @@
 <h1 align="center" id="title">LifeLink</h1>
 
-<p align="center"><img src="" alt="project-image"></p>
-
 <p id="description">This is blood donation website. If anyone is suitable for donating blood then he can register here and donate blood to patient who requested for blood. Donor and receiver both can donate and receive blood. Hope this website able to help many people who need blood urgently. If you are fit for donating blood then please register in our system. Or if you need blood urgently for any emergency patient then please register in our system and create a request for blood donation.</p>
 
 <h2>🚀 Demo</h2>
@@ -27,7 +25,7 @@ Here're some of the project's best features:
 <p>1. Clone ripository</p>
 
 ```
-git clone https://github.com/Akbar014/swiftpos_frontend.git
+git clone git clone https://github.com/Akbar014/lifelink_blood_donation_project_frontend-.git
 ```
 
 <p>2. Enter into project directory</p>
