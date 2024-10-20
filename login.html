@@ -34,6 +34,8 @@
         <link href="js/app.js" rel="stylesheet">
 
         <link href="css/templatemo-topic-listing.css" rel="stylesheet">    
+		<!-- Toastr CDN -->  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 
 </head>
@@ -96,7 +98,7 @@
 								</div>
 								
 								<div class="container-login100-form-btn">
-									<button class="login100-form-btn submit-btn"  onclick="handleLogin(event)" >
+									<button class="login100-form-btn submit-btn" id="login-btn" onclick="handleLogin(event)" >
 										Login
 									</button>
 								</div>
@@ -166,7 +168,8 @@
 	<script src="js/jquery.sticky.js"></script>
 	<script src="js/click-scroll.js"></script>
 	<script src="js/custom.js"></script>
-	
+	<!-- Toastr js  -->  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 </body>
 </html>

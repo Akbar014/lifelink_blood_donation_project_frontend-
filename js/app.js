@@ -195,24 +195,25 @@ const handleRegistration = (event) => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.error) {
-
-                        document.getElementById("error").innerText = data.error;
+                        toastr.error(data.error, 'Error');
                     } else if(data.username) {
-                        document.getElementById("error").innerText = data.username;
+                        toastr.error(data.username, 'Error');
                     }else {
-                        document.getElementById("error").innerText = "Registration successful. Check your mail for confirmation.";
+                        toastr.success('Registration successful. Check your mail for confirmation', 'Success');
                     }
+
                     document.getElementById("register").innerText = "Register";
 
                 });
         } else {
-            document.getElementById("error").innerText =
-                "Password must contain at least eight characters, including one letter, one number, and one special character.";
+                toastr.error('Password must contain at least eight characters, including one letter, one number, and one special character.', 'Error');
+                document.getElementById("register").innerText = "Register";
         }
     } else {
-        document.getElementById("error").innerText = "Password and confirm password do not match";
+        toastr.error('Password and confirm password do not match', 'Error');
 
     }
+
 };
 
 
@@ -222,6 +223,7 @@ const handleLogin = (event) => {
     event.preventDefault();
     const username = getValue("login-username");
     const password = getValue("login-password");
+    document.getElementById("login-btn").innerText = "Loading";
     if ((username, password)) {
         fetch("https://lifelink-five.vercel.app/donate_blood/login/", {
             method: "POST",
@@ -237,15 +239,22 @@ const handleLogin = (event) => {
                     localStorage.setItem("user", data.user);
                     localStorage.setItem("user_id", data.user_id);
                     localStorage.setItem("login_success", true);
+                    document.getElementById("login-btn").innerText = "Loading";
                     window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
                     // window.location.href = "http://127.0.0.1:5500/index.html";
-
                     toastr.success('Logged in successfully!', 'Success');
+                    // document.getElementById("login-btn").innerText = "Login";
  
 
                 } else {
-                    document.getElementById("alert").innerHTML = data.error;
+                    document.getElementById("login-btn").innerText = "Loading";
+                    // window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
+                    // document.getElementById("alert").innerHTML = data.error;
+                    toastr.error(data.error, 'Error');
+                    
                 }
+
+                document.getElementById("login-btn").innerText = "Login";
             });
     }
 };
