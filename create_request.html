@@ -26,6 +26,19 @@
         
         <!-- Toastr CDN -->  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+        <style>
+            .customContainer{
+                width: 60% !important;
+            } 
+
+            @media (max-width: 992px) {
+                .customContainer{
+                    width: 100% !important;
+                }
+            }
+          
+        </style>
 <!--
 
 TemplateMo 590 topic listing
@@ -66,14 +79,17 @@ https://templatemo.com/tm-590-topic-listing
                     <div class="row justify-content-center align-items-center">
 
                     <h3 class="text-light text-center"> Create Donation Request </h3>
-                    <div class="container " style="width: 60%">
+                    <div class="container customContainer" >
                         <form id="createEntryForm">
                          <div class="form-group">
                             <label for="patientName">Patient Name</label>
                             <input type="text" class="form-control" id="patientName" name="patient_name" required>
                         </div>
-                        
-                        <div class="form-group">
+                        <div class="form-group mt-2">
+                            <label for="mobile_no">Mobile No</label>
+                            <input type="text" class="form-control" id="mobile_no" name="mobile_no" required>
+                        </div>
+                        <div class="form-group mt-2">
                             <label for="bloodGroup">Blood Group</label>
                             <select class="form-select" aria-label="Default select example"  id="bloodGroup" name="blood_group" required>
                                 <option selected>Select Blood Group </option>
@@ -87,16 +103,16 @@ https://templatemo.com/tm-590-topic-listing
                                 <option value="O-">O-</option>
                               </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="details">Details</label>
                             <textarea class="form-control" id="details" name="details" rows="3" required></textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="location">Location</label>
                             <input type="text" class="form-control" id="location" name="location" required>
                         </div>
                        
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="requestedDate">Requested Date</label>
                             <input type="datetime-local" class="form-control" id="requestedDate" name="requested_date" required>
                         </div>

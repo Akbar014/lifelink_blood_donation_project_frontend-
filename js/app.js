@@ -225,6 +225,7 @@ const handleLogin = (event) => {
     const password = getValue("login-password");
     document.getElementById("login-btn").innerText = "Loading";
     if ((username, password)) {
+        // fetch("https://lifelink-five.vercel.app/donate_blood/login/", {
         fetch("https://lifelink-five.vercel.app/donate_blood/login/", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -240,8 +241,8 @@ const handleLogin = (event) => {
                     localStorage.setItem("user_id", data.user_id);
                     localStorage.setItem("login_success", true);
                     document.getElementById("login-btn").innerText = "Loading";
-                    window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
-                    // window.location.href = "http://127.0.0.1:5500/index.html";
+                    // window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
+                    window.location.href = "http://127.0.0.1:5500/index.html";
                     toastr.success('Logged in successfully!', 'Success');
                     // document.getElementById("login-btn").innerText = "Login";
  

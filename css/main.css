@@ -79,7 +79,6 @@ ul, li {
 	list-style-type: none;
 }
 
-
 /*---------------------------------------------*/
 input {
 	outline: none;
@@ -362,6 +361,7 @@ iframe {
   /* font-family: Poppins-Medium; */
   color: gray !important;
 }
+
 .textareapadding{
   padding-left: 27px !important;
 }

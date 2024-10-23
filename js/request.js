@@ -5,9 +5,18 @@ const donationRequestDetails = () => {
         .then((res) => res.json())
         .then((data) => {
             document.getElementById("patient_name").innerHTML = data.patient_name;
+            document.getElementById("patient_phone").innerHTML = data.mobile_no;
             document.getElementById("blood_group").innerHTML = data.blood_group;
             document.getElementById("location").innerHTML = data.location;
             document.getElementById("details").innerHTML = data.details;
+            
+
+            fetch(`https://lifelink-five.vercel.app/donate_blood/donate_blood_users/${data.accepted_by}`)
+            .then((res) => res.json())
+            .then((data)=> {
+                console.log(data);
+                document.getElementById("accepted_by").innerHTML =  data.username + ", Phone : " + data.mobile_no ;
+            })
             const request_date = new Date(data.requested_date);
             const formatted_date = request_date.toDateString() + ' ' + request_date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             document.getElementById("date").innerHTML = formatted_date;
