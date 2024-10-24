@@ -121,7 +121,7 @@ const displayDonor = (donors) => {
                                     <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>  Age : ${donor.age} </span></p>
                                     
                                     
-                                     <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>  Last Donation Date  : ${donor.last_donation_date} </span></p>
+                                     <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>  Last Donation Date  : ${donor.last_donation_date ? donor.last_donation_date : 'Not donated yet'} </span></p>
                                      <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>   ${availableStatus} </span></p>
                                     
                                 </div>
