@@ -562,7 +562,7 @@ strong {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  margin-top: 35px;
+  /* margin-top: 35px; */
 }
 
 .custom-block .rounded-pill {
@@ -620,11 +620,13 @@ strong {
 }
 
 .bg-design {
-  background-color: #00B0FF;
+  /* background-color: #00B0FF; */
+  background-color: #0b6970;
 }
 
 .bg-graphic {
-  background-color: #00BFA6;
+  /* background-color: #00BFA6; */
+  background-color: #1654a1;
 }
 
 .bg-advertising {

@@ -43,14 +43,14 @@ const displayDonationRequest = (donationRequests) => {
                         <img src="images/common_image3.png" class="custom-block-image img-fluid" alt="">
                         <div class="d-flex">
                             <div>
-                                <h5 class="mb-2">${donationRequest.patient_name}</h5>
+                                <h6 class="mb-2 mt-2">${donationRequest.patient_name}</h6>
 
                                 <p class="mb-0" style="font-size: 15px;font-weight:bold"><span> Requested User Name : ${donationRequest.user} </span></p>
                                 <p class="mb-0" style="font-size: 15px;font-weight:bold"><span> Donaton Status : ${donationRequest.status} </span></p>
                                 
                             </div>
 
-                            <span class="badge bg-design rounded-pill ms-auto">${donationRequest.blood_group}</span>
+                            <span class="badge bg-design rounded-pill ms-auto mt-2">${donationRequest.blood_group}</span>
                         </div>
 
                         <p class="mb-0 mt-2" style="font-size: 15px;text-align:justify;min-height:50px;"><span>  ${donationRequest.details.slice(0, 80)} </span></p>
@@ -114,7 +114,7 @@ const displayDonor = (donors) => {
                             </div>
                             <div class="d-flex mt-4">
                                 <div>
-                                    <h5 class="mb-2">${donor.first_name} ${donor.last_name}</h5>
+                                    <h6 class="mb-2 mt-2">${donor.first_name} ${donor.last_name}</h6>
 
                                     <p class="mb-0" style="font-size: 14px;font-weight:bold"><span>  Email : ${donor.email} </span></p>
                                     <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>  Phone : ${donor.mobile_no} </span></p>
@@ -126,12 +126,9 @@ const displayDonor = (donors) => {
                                     
                                 </div>
 
-                                <span class="badge bg-design rounded-pill ms-auto">${donor.blood_group}</span>
+                                <span class="badge bg-design rounded-pill ms-auto mt-2">${donor.blood_group}</span>
                             </div>
 
-                            
-                            
-                        
                     </div>
             `
 
@@ -241,15 +238,15 @@ const handleLogin = (event) => {
                     localStorage.setItem("user_id", data.user_id);
                     localStorage.setItem("login_success", true);
                     document.getElementById("login-btn").innerText = "Loading";
-                    // window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
-                    window.location.href = "http://127.0.0.1:5500/index.html";
+                    window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
+                    // window.location.href = "http://127.0.0.1:5500/index.html";
                     toastr.success('Logged in successfully!', 'Success');
                     // document.getElementById("login-btn").innerText = "Login";
  
 
                 } else {
                     document.getElementById("login-btn").innerText = "Loading";
-                    // window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
+                    window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
                     // document.getElementById("alert").innerHTML = data.error;
                     toastr.error(data.error, 'Error');
                     
