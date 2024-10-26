@@ -246,7 +246,7 @@ const handleLogin = (event) => {
 
                 } else {
                     document.getElementById("login-btn").innerText = "Loading";
-                    window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
+                    // window.location.href = "https://fabulous-trifle-8657b5.netlify.app/";
                     // document.getElementById("alert").innerHTML = data.error;
                     toastr.error(data.error, 'Error');
                     
@@ -302,6 +302,23 @@ function loadHeader() {
             userload();
         });
 }
+function loadDashHeader() {
+    fetch('dashboard_header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('aside').innerHTML = data;
+
+        });
+}
+
+function loadDashNavbar() {
+    fetch('dashboard_nav.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('nav').innerHTML = data;
+
+        });
+}
 
 function loadFooter() {
     fetch('footer.html')
@@ -314,6 +331,8 @@ function loadFooter() {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadHeader();
+    loadDashHeader();
+    loadDashNavbar();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -518,17 +537,11 @@ const displaySearchData = (donors) => {
                                      <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>  Last Donation Date  : ${donor.last_donation_date} </span></p>
                                      <p class="mb-0" style="font-size: 15px;font-weight:bold"><span>   ${availableStatus} </span></p>
 
-                                
-                                    
                                 </div>
 
                                 <span class="badge bg-design rounded-pill ms-auto">${donor.blood_group}</span>
                             </div>
 
-                            <p class="mb-0 mt-2" style="font-size: 15px;text-align:justify;min-height:50px;"><span>  ${address} </span></p>
-                            
-                            
-                        
                     </div>
             `
 
@@ -536,6 +549,7 @@ const displaySearchData = (donors) => {
 
     });
 }
+//<p class="mb-0 mt-2" style="font-size: 15px;text-align:justify;min-height:50px;"><span>  ${address} </span></p>
 
 // availableDonoationRequest('A+')
 // availableDonor('A+')
