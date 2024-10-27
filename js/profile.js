@@ -12,6 +12,7 @@ const userProfile = () => {
     })
         .then((res) => res.json())
         .then((data) => {
+            // console.log(data);
             const profileImage = document.getElementById('profile-image');
 
             if (profileImage && data.image) {
@@ -48,6 +49,7 @@ userProfile();
 
 
 const editProfileInfo = (event) => {
+    event.preventDefault();
     const user_id = localStorage.getItem("user_id");
     const token = localStorage.getItem('token');
     console.log("user edit")
@@ -109,6 +111,7 @@ const editProfileInfo = (event) => {
         .then((res) => res.json())
         .then((data) => {
             console.log('Profile updated:', data);
+            window.location.href = "profile.html"
         })
         .catch((error) => console.log("error"));
 };
