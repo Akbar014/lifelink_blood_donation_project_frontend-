@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LifeLink | Accepted Donation Requests </title>
+  <title> LifeLink | Donate Money </title>
   <!-- Linking Google Font Link For Icons -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -32,30 +32,34 @@
     </div> -->
 
   </aside>
-
+<!-- 
   <nav style="height: 80px; width:100%; background-color: #161a2d;color: white;">
     <div class="container ">
         <div class="row ">
             <div class="col-md-11 col-8 d-flex align-items-center justify-content-center ml-5">
-                <!-- <ul class="list-unstyled" style="margin-top: 30px;">
+                <ul class="list-unstyled" style="margin-top: 30px;">
                     <li>Home</li>
                     <li>All Recipient Requests</li>
-                </ul> -->
+                </ul>
             </div>
             <div class="col-md-1 col-4 d-flex justify-content-end">
-                <!-- <img src="https://res.cloudinary.com/dxa4o1mld/image/upload/v1729420547/pjtldn23w8ylt9t0firq.jpg" style="height: 200px;" alt="Recipient Image"> -->
+                <img src="https://res.cloudinary.com/dxa4o1mld/image/upload/v1729420547/pjtldn23w8ylt9t0firq.jpg" style="height: 200px;" alt="Recipient Image">
                 <div class="user-profile" style="margin-top: 20px;">
                     <img src="https://res.cloudinary.com/dxa4o1mld/image/upload/v1729420547/pjtldn23w8ylt9t0firq.jpg" alt="Profile Image" />
-                    <!-- <div class="user-detail">
+                    <div class="user-detail">
                       <h3>Eva Murphy</h3>
                       <span>Web Developer</span>
-                    </div> -->
+                    </div>
                 </div>
             </div>
             
         </div>
        
     </div>
+  </nav> -->
+
+  <nav style="height: 80px; width:100%; background-color: #161a2d;color: white;" id="nav">
+    
   </nav>
 
   <div class="content">
@@ -69,16 +73,17 @@
 
       <div class="row justify-content-center align-items-center mt-5" style="background-color: white;">
 
-        <h5 class="fontColor text-center  mb-3 mt-5"> My Accepted Donation Requests </h5>
+        <h5 class="fontColor text-center  mb-3 mt-5"> Your Donation </h5>
         <div class="table-responsive">
 
             <table class="table table-striped mt-3">
                 <thead>
                     <tr>
-                    <th scope="col"> Patient Name  </th>
-                    <th scope="col"> Requested User</th>
+                    <th scope="col"> User Name  </th>
+                    <th scope="col"> Transaction ID</th>
+                    <th scope="col"> Amount</th>
                     <th scope="col"> Date </th>
-                    <th scope="col">Action </th>
+                    <!-- <th scope="col">Action </th> -->
                     </tr>
                 </thead>
                 <tbody id="table-bodys">
@@ -104,15 +109,15 @@
 
   <script>
     const sidebar = document.querySelector('.sidebar');
-const content = document.querySelector('.content');
+    const content = document.querySelector('.content');
 
-sidebar.addEventListener('mouseenter', () => {
-    content.style.padding = '30px 30px 20px 300px';
-});
+    sidebar.addEventListener('mouseenter', () => {
+        content.style.padding = '30px 30px 20px 300px';
+    });
 
-sidebar.addEventListener('mouseleave', () => {
-    content.style.padding = '30px 30px 20px 120px';
-});
+    sidebar.addEventListener('mouseleave', () => {
+        content.style.padding = '30px 30px 20px 120px';
+    });
 
   </script>
 

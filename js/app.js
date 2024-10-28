@@ -553,5 +553,28 @@ const displaySearchData = (donors) => {
 
 // availableDonoationRequest('A+')
 // availableDonor('A+')
+
+function getCurrentFilename() {
+    const urlPath = window.location.pathname; // Get the path part of the URL
+    const filename = urlPath.substring(urlPath.lastIndexOf('/') + 1); // Extract the filename
+    return filename;
+}
+
+function securePage() {
+    const pageUrl = getCurrentFilename();
+    const token = localStorage.getItem('token');
+    
+    const publicPages = ['login.html', 'index.html', 'about.html', 'topics-detail.html', 'recipient_requests', 'register.html', 'contact.html']; // Add all public page filenames here
+
+
+    if (publicPages.includes(pageUrl)) {
+        return;
+    }
+
+    if (!token) {
+        window.location.href = 'login.html';
+    }
+}
+securePage()
 allDonoationRequest()
 allDonor()
