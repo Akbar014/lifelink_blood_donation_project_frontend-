@@ -49,26 +49,8 @@
         <div class="col-sm-6 col-md-3 mt-3">
           <div class="card " style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
             <div class="card-body">
-              <h6 class="card-title fontColor">Total Donation Request</h6>
-              <span>5</span> <br> 
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-3">
-          <div class="card " style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-            <div class="card-body">
-              <h6 class="card-title fontColor">Completed Donation Request</h6>
-              <span>5</span> <br> 
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-3">
-          <div class="card " style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-            <div class="card-body">
-              <h6 class="card-title fontColor">Accepted Donation Request</h6>
-              <span>5</span> <br> 
+              <h6 class="card-title fontColor">Total Donation Request Created</h6>
+              <span id="total_donation_request_created"></span> <br> 
               <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
             </div>
           </div>
@@ -77,11 +59,40 @@
           <div class="card " style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
             <div class="card-body">
               <h6 class="card-title fontColor">Pending Donation Request</h6>
-              <span>5</span> <br> 
+              <span id="pending_donation_request"></span> <br> 
               <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
             </div>
           </div>
         </div>
+        <div class="col-sm-6 col-md-3 mt-3">
+          <div class="card " style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <div class="card-body">
+              <h6 class="card-title fontColor">Accepted Donation Request</h6>
+              <span id="accepted_donation_request"></span> <br> 
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 mt-3">
+          <div class="card " style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <div class="card-body">
+              <h6 class="card-title fontColor">Completed Donation Request</h6>
+              <span id="completed_donation_request"></span> <br> 
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-6 col-md-3 mt-3">
+          <div class="card " style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <div class="card-body">
+              <h6 class="card-title fontColor">Accepted Request By You</h6>
+              <span id="accepted_donation_request_by_you"></span> <br> 
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+        
 
         <div class="d-flex justify-content-center mt-4">
             <button class="btn btn-info text-white mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #161a2d;" >Donate Money</button>
@@ -140,7 +151,7 @@
       // document.getElementById("amount").value = 0;
       const token = localStorage.getItem('token');
 
-      const response = await fetch('https://lifelink-five.vercel.app/donate_blood/donate-money/', {
+    const response = await fetch('https://lifelink-five.vercel.app/donate_blood/donate-money/', {
     method: 'POST',
     // headers: { 'Content-Type': 'application/json' },
    
@@ -194,6 +205,27 @@
           confirmButtonText: 'OK'
       });
   }
+</script>
+
+<script>
+  const token = localStorage.getItem('token');
+  fetch(`https://lifelink-five.vercel.app/donate_blood/statistics/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    }
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      document.getElementById('total_donation_request_created').innerHTML = data.total_donation_request 
+      document.getElementById('completed_donation_request').innerHTML = data.total_completed_request 
+      document.getElementById('accepted_donation_request').innerHTML = data.total_accepted_request 
+      document.getElementById('pending_donation_request').innerHTML = data.total_pending_request 
+      document.getElementById('accepted_donation_request_by_you').innerHTML = data.accepted_request_by_you_count
+ 
+    })
 </script>
 </body>
 </html>

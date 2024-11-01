@@ -307,18 +307,55 @@ function loadDashHeader() {
         .then(response => response.text())
         .then(data => {
             document.getElementById('aside').innerHTML = data;
+            userload();
 
         });
 }
 
 function loadDashNavbar() {
     fetch('dashboard_nav.html')
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load navigation');
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById('nav').innerHTML = data;
+            const user_id = localStorage.getItem("user_id");
+            const token = localStorage.getItem("token");
 
-        });
+            if (user_id && token) {
+                fetch(`https://lifelink-five.vercel.app/donate_blood/users/${user_id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Token ${token}`
+                    }
+                })
+                    .then(res => {
+                        if (!res.ok) {
+                            throw new Error('Failed to fetch user data');
+                        }
+                        return res.json();
+                    })
+                    .then(data => {
+                        const profileImg = document.getElementById('profile-imgg');
+                        if (profileImg && data.image) {
+                            profileImg.src = data.image;
+                        }
+                    })
+                    .catch(err => console.log(err));
+            } else {
+                console.log('User ID or token is missing');
+            }
+        })
+        .catch(err => console.log(err));
 }
+
+// Call the function to load the navbar and user profile image
+loadDashNavbar();
+
 
 function loadFooter() {
     fetch('footer.html')
@@ -560,21 +597,50 @@ function getCurrentFilename() {
     return filename;
 }
 
+// function securePage() {
+//     const pageUrl = getCurrentFilename();
+//     const token = localStorage.getItem('token');
+    
+//     const publicPages = ['login.html', 'index.html', 'about.html', 'topics-detail.html', 'recipient_requests', 'register.html', 'contact.html']; // Add all public page filenames here
+
+
+//     if (publicPages.includes(pageUrl)) {
+//         return;
+//     }
+
+//     if (!token) {
+//         window.location.href = 'login.html';
+//     }
+// }
+
 function securePage() {
     const pageUrl = getCurrentFilename();
     const token = localStorage.getItem('token');
     
-    const publicPages = ['login.html', 'index.html', 'about.html', 'topics-detail.html', 'recipient_requests', 'register.html', 'contact.html']; // Add all public page filenames here
+    // Define publicly accessible pages
+    const publicPages = [
+        'login.html', 'index.html', 'about.html', 'topics-detail.html',
+        'recipient_requests', 'register.html', 'contact.html'
+    ];
 
+    // Define pages that require authentication
+    const restrictedPages = [
+        'dashboard.html', 'accepted_donation.html', 'create_request.html',
+        'donation_request.html', 'donation_history.html', 'profile.html'
+    ];
 
+    // Allow access to public pages without checking the token
     if (publicPages.includes(pageUrl)) {
         return;
     }
 
-    if (!token) {
+    // Redirect to login if trying to access a restricted page without a token
+    if (restrictedPages.includes(pageUrl) && !token) {
         window.location.href = 'login.html';
     }
 }
+
+// Call the function to check access on page load
 securePage()
 allDonoationRequest()
 allDonor()
