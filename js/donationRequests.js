@@ -75,7 +75,6 @@ const cancelRequest = (donationRequestId) => {
             'Content-Type': 'application/json',
             'Authorization': `Token ${token}`,
 
-
         }
     })
 
